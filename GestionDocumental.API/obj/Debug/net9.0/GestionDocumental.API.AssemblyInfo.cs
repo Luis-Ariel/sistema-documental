@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GestionDocumental.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7dc51c0b05daab5c05dce37c1761f0f0b150b927")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4758b342be9c27fe700d39e00d13e025b265d1ea")]
 [assembly: System.Reflection.AssemblyProductAttribute("GestionDocumental.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GestionDocumental.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

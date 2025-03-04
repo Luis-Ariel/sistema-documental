@@ -6,7 +6,7 @@ using Microsoft.OpenApi.Models;
 using GestionDocumental.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using GestionDocumental.Infrastructure.Services;
-
+using GestionDocumental.API.Middleware; // Importar el middleware
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -38,7 +38,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "API de Gestión Documental v1"));
 }
 
+// *** Agregar el middleware de excepciones antes de manejar las rutas ***
+app.UseMiddleware<ExceptionMiddleware>();
+
 app.UseHttpsRedirection();
-app.UseAuthorization();
 app.MapControllers();
 app.Run();
