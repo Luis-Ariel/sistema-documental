@@ -1,0 +1,19 @@
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace SistemaDocumental.Core.Entities
+{
+    public class Direccion
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)] // ID generado automáticamente
+        public int ID_Direccion { get; set; }
+
+        [Required]
+        [MaxLength(100)]
+        public string Nombre_Direccion { get; set; }
+
+        public string Descripcion { get; set; } 
+    }
+}
