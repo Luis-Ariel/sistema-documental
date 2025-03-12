@@ -1,0 +1,6 @@
+@SistemaDocumental.API_HostAddress = http://localhost:5001
+
+GET {{SistemaDocumental.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
