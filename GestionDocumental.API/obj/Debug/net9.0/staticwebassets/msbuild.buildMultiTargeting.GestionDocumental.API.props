@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="..\build\GestionDocumental.API.props" />
-</Project>

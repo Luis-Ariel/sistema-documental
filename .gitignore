@@ -9,3 +9,14 @@ obj/
 *.cache
 *.log
 *.pdb
+bin/
+obj/
+*/bin/
+*/obj/
+.vs/
+.idea/
+*.user
+*.suo
+*.cache
+*.log
+*.pdb
