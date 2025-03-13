@@ -16,10 +16,12 @@ namespace SistemaDocumental.Core.Entities
 
         public string Descripcion { get; set; }
 
-        [Required]
-        public int ID_Direccion { get; set; } // Relacionado con la tabla Direccion
+        public int ID_Direccion { get; set; }
 
         [ForeignKey("ID_Direccion")]
         public virtual Direccion Direccion { get; set; }
+
+        // Relación 1-N: Un departamento puede contener múltiples secciones
+        public virtual ICollection<Seccion> Secciones { get; set; } = new List<Seccion>();
     }
 }

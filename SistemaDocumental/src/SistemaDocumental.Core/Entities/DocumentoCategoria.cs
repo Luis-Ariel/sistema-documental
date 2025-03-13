@@ -5,14 +5,16 @@ namespace SistemaDocumental.Core.Entities
 {
     public class DocumentoCategoria
     {
+        // Clave foránea: Documento
         [Required]
-        public int ID_Documento { get; set; } // Relacionado con la tabla Documento
-
-        [Required]
-        public int ID_Categoria { get; set; } // Relacionado con la tabla Categoria
+        public int ID_Documento { get; set; }
 
         [ForeignKey("ID_Documento")]
         public virtual Documento Documento { get; set; }
+
+        // Clave foránea: Categoría
+        [Required]
+        public int ID_Categoria { get; set; }
 
         [ForeignKey("ID_Categoria")]
         public virtual Categoria Categoria { get; set; }

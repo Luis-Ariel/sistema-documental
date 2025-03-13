@@ -25,10 +25,17 @@ namespace SistemaDocumental.Core.Entities
         [Required]
         public bool Cumple { get; set; } = false; // Indica si cumple con la normativa
 
-        [ForeignKey("Responsable")]
+        [Required]
+        public int ID_UsuarioResponsable { get; set; }
+
+        [ForeignKey("ID_UsuarioResponsable")]
         public virtual Usuario UsuarioResponsable { get; set; }
 
-        [ForeignKey("Documento")]
-        public virtual Documento DocumentoRevisado { get; set; }
+        // Clave foránea: Documento al que pertenece el registro de cumplimiento
+        [Required]
+        public int ID_Documento { get; set; }
+
+        [ForeignKey("ID_Documento")]
+        public virtual Documento Documento { get; set; }
     }
 }

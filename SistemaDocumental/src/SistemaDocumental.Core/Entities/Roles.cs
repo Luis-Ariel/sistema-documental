@@ -22,9 +22,28 @@ namespace SistemaDocumental.Core.Entities
         [Required]
         public DateTime Fecha_Creacion { get; set; } = DateTime.Now; // Fecha de creación del rol
 
-        public int? ID_GrupoPadre { get; set; } // Grupo superior (para jerarquía)
+        // Clave foránea: Rol padre en la jerarquía
+        public int? ID_GrupoPadre { get; set; }
 
         [ForeignKey("ID_GrupoPadre")]
-        public virtual Roles GrupoPadre { get; set; }
+        public virtual Rol RolPadre { get; set; }
+
+        // Relación 1-N: Un rol puede tener varios roles subordinados
+        public virtual ICollection<Rol> RolesSubordinados { get; set; } = new List<Rol>();
+
+        // Relación 1-N: Un rol puede ser destinatario de múltiples alertas
+        public virtual ICollection<AlertaDestinatario> AlertasRecibidas { get; set; } = new List<AlertaDestinatario>();
+
+        // Relación 1-N: Un rol puede tener múltiples permisos a través de RolPermiso
+        public virtual ICollection<RolPermiso> PermisosRol { get; set; } = new List<RolPermiso>();
+
+        // Relación 1-N: Un rol puede tener múltiples permisos modificados en el historial
+        public virtual ICollection<HistorialPermisos> HistorialPermisos { get; set; } = new List<HistorialPermisos>();
+
+        // Relación 1-N: Un rol puede estar asignado a múltiples usuarios
+        public virtual ICollection<Usuario> Usuarios { get; set; } = new List<Usuario>();
+
+        // Relación 1-N: Un rol puede ser destinatario de múltiples notificaciones
+        public virtual ICollection<NotificacionEvento> NotificacionesRecibidas { get; set; } = new List<NotificacionEvento>();
     }
 }

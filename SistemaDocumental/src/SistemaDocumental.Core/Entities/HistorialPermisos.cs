@@ -10,19 +10,30 @@ namespace SistemaDocumental.Core.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)] // ID generado automáticamente
         public int ID_Historial { get; set; }
 
+        // Clave foránea: Usuario que realizó el cambio de permisos
         [Required]
-        public int ID_Usuario { get; set; } // Usuario que realizó el cambio
+        public int ID_Usuario { get; set; }
+
+        [ForeignKey("ID_Usuario")]
+        public virtual Usuario Usuario { get; set; }
+
+        [Required]
+        public int ID_Permiso { get; set; }
+
+        [ForeignKey("ID_Permiso")]
+        public virtual Permiso Permiso { get; set; }
 
         [Required]
         public DateTime Fecha { get; set; } = DateTime.Now; // Fecha del cambio
 
         [Required]
-        public int ID_Permiso { get; set; } // Permiso afectado
-
-        [Required]
         public TipoCambioPermiso Tipo_Cambio { get; set; } // Tipo de cambio realizado
 
-        public int? ID_Grupo { get; set; } // Grupo afectado (puede ser nulo)
+        // Clave foránea: Grupo (Rol) que recibió la modificación de permisos (opcional)
+        public int? ID_Grupo { get; set; }
+
+        [ForeignKey("ID_Grupo")]
+        public virtual Rol Grupo { get; set; }
 
         [Required]
         public NivelAcceso Nivel_Acceso { get; set; } // Nivel de acceso del permiso

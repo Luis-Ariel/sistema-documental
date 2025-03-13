@@ -15,5 +15,8 @@ namespace SistemaDocumental.Core.Entities
         public string Nombre_Direccion { get; set; }
 
         public string Descripcion { get; set; } 
+
+        // Relación 1-N: Una dirección puede contener múltiples departamentos
+        public virtual ICollection<Departamento> Departamentos { get; set; } = new List<Departamento>();
     }
 }

@@ -16,5 +16,8 @@ namespace SistemaDocumental.Core.Entities
 
         [MaxLength(200)]
         public string Descripcion { get; set; } // Descripción opcional del formato permitido
+
+        // Relación 1-N: Un formato puede estar en múltiples tipos de documentos
+        public virtual ICollection<TipoDocumento> TiposDeDocumentos { get; set; } = new List<TipoDocumento>();
     }
 }

@@ -19,7 +19,17 @@ namespace SistemaDocumental.Core.Entities
 
         public string Descripcion { get; set; } // Información adicional sobre el tipo de documento
 
+        // Clave foránea: Formato permitido
+        [Required]
+        public int ID_Formato { get; set; }
+
         [ForeignKey("ID_Formato")]
-        public virtual FormatoPermitido Formato { get; set; }
+        public virtual FormatoPermitido FormatoPermitido { get; set; }
+
+        // Relación 1-N: Un tipo de documento puede estar en múltiples CategoriaTipoDocumento
+        public virtual ICollection<CategoriaTipoDocumento> CategoriasTipoDocumento { get; set; } = new List<CategoriaTipoDocumento>();
+
+        // Relación 1-N: Un tipo de documento puede estar asociado a múltiples documentos
+        public virtual ICollection<Documento> Documentos { get; set; } = new List<Documento>();
     }
 }

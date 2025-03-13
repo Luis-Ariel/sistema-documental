@@ -10,12 +10,29 @@ namespace SistemaDocumental.Core.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)] // ID generado automáticamente
         public int ID_Notificacion { get; set; }
 
-        public int? ID_Accion { get; set; } // Puede ser nulo si la notificación es manual
+        // Clave foránea opcional: Alerta que originó la notificación
+        public int? ID_Alerta_Documento { get; set; }
 
-        public int? ID_Alerta_Documento { get; set; } // Puede estar ligada a una alerta
+        [ForeignKey("ID_Alerta_Documento")]
+        public virtual AlertaDocumento AlertaDocumento { get; set; }
 
+        // Clave foránea opcional: Acción que originó la notificación
+        public int? ID_Accion { get; set; }
+
+        [ForeignKey("ID_Accion")]
+        public virtual Accion Accion { get; set; }
+
+        // Destinatario de la notificación (Usuario o Grupo)
         [Required]
-        public int ID_Usuario { get; set; } // Usuario destinatario de la notificación
+        public int ID_Usuario { get; set; }
+
+        [ForeignKey("ID_Usuario")]
+        public virtual Usuario Usuario { get; set; }
+
+        public int? ID_Grupo { get; set; }
+
+        [ForeignKey("ID_Grupo")]
+        public virtual Roles Grupo { get; set; }
 
         [Required]
         public EstadoNotificacion Estado { get; set; } = EstadoNotificacion.Pendiente;
@@ -29,6 +46,8 @@ namespace SistemaDocumental.Core.Entities
 
         [Required]
         public string Mensaje { get; set; } // Contenido de la notificación
+
+        
     }
 
     public enum EstadoNotificacion

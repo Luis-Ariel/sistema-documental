@@ -17,5 +17,11 @@ namespace SistemaDocumental.Core.Entities
         [Required]
         [MaxLength(100)]
         public string Jefatura { get; set; } // Nombre del responsable o líder del centro de costos
+
+        // Relación 1-N: Un centro de costos puede estar asignado a múltiples oficinas
+        public virtual ICollection<Oficina> Oficinas { get; set; } = new List<Oficina>();
+
+        // Relación 1-N: Un centro de costos puede estar asignado a múltiples usuarios
+        public virtual ICollection<Usuario> Usuarios { get; set; } = new List<Usuario>();
     }
 }

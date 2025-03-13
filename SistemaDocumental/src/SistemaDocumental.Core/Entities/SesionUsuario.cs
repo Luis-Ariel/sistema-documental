@@ -11,9 +11,6 @@ namespace SistemaDocumental.Core.Entities
         public int ID_Sesion { get; set; }
 
         [Required]
-        public int ID_Usuario { get; set; } // Relacionado con la tabla Usuario
-
-        [Required]
         public DateTime Fecha_Inicio { get; set; } = DateTime.Now; // Inicio de la sesión
 
         public DateTime? Fecha_Expiracion { get; set; } // Cuándo expira la sesión
@@ -27,6 +24,10 @@ namespace SistemaDocumental.Core.Entities
 
         [Required]
         public bool Doble_Factor_Completado { get; set; } = false; // Indica si el 2FA fue completado
+
+        // Clave foránea: Usuario que inició la sesión
+        [Required]
+        public int ID_Usuario { get; set; }
 
         [ForeignKey("ID_Usuario")]
         public virtual Usuario Usuario { get; set; }

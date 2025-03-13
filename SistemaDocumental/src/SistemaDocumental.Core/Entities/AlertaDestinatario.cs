@@ -5,17 +5,22 @@ namespace SistemaDocumental.Core.Entities
 {
     public class AlertaDestinatario
     {
+        // Clave foránea: Alerta asociada
         [Required]
-        public int ID_Alerta { get; set; } // Alerta asociada
-
-        public int? ID_Usuario { get; set; } // Usuario destinatario (puede ser nulo si se asigna a un grupo)
-
-        public int? ID_Grupo { get; set; } // Grupo destinatario (puede ser nulo si se asigna a un usuario)
-
-        [Required]
-        public bool Activa { get; set; } = true; // Indica si la alerta sigue vigente
+        public int ID_Alerta { get; set; }
 
         [ForeignKey("ID_Alerta")]
         public virtual AlertaDocumento Alerta { get; set; }
+
+        // Clave foránea: Destinatario (Usuario o Grupo)
+        public int? ID_Usuario { get; set; }
+
+        [ForeignKey("ID_Usuario")]
+        public virtual Usuario Usuario { get; set; }
+
+        public int? ID_Grupo { get; set; }
+
+        [ForeignKey("ID_Grupo")]
+        public virtual Roles Grupo { get; set; }
     }
 }

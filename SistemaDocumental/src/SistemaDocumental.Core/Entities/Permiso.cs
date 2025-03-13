@@ -21,6 +21,12 @@ namespace SistemaDocumental.Core.Entities
         public NivelAcceso Nivel_Acceso { get; set; } // Nivel de acceso del permiso
 
         public string Descripcion { get; set; } // Descripción opcional del permiso
+
+        // Relación 1-N: Un permiso puede estar asociado a múltiples roles a través de RolPermiso
+        public virtual ICollection<RolPermiso> RolesAsignados { get; set; } = new List<RolPermiso>();
+
+        // Relación 1-N: Un permiso puede haber sido modificado en múltiples registros de historial
+        public virtual ICollection<HistorialPermiso> HistorialModificaciones { get; set; } = new List<HistorialPermiso>();
     }
 
     public enum NivelAcceso

@@ -10,17 +10,27 @@ namespace SistemaDocumental.Core.Entities
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)] // ID generado automáticamente
         public int ID_Registro { get; set; }
 
-        [Required]
+          [Required]
         public int ID_Documento { get; set; }
+
+        [ForeignKey("ID_Documento")]
+        public virtual Documento Documento { get; set; }
 
         [Required]
         public DateTime Fecha { get; set; } = DateTime.Now;
 
         [Required]
-        public int Usuario_Modificador { get; set; }
+        public int ID_UsuarioModificador { get; set; }
 
+        [ForeignKey("ID_UsuarioModificador")]
+        public virtual Usuario UsuarioModificador { get; set; }
+
+        // Clave foránea: Acción que generó la versión del historial
         [Required]
         public int ID_Accion { get; set; }
+
+        [ForeignKey("ID_Accion")]
+        public virtual Accion Accion { get; set; }
 
         [Required]
         [MaxLength(100)]

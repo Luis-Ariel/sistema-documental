@@ -11,7 +11,10 @@ namespace SistemaDocumental.Core.Entities
         public int ID_Alerta { get; set; }
 
         [Required]
-        public int ID_Documento { get; set; } // Documento al que está asociada la alerta
+        public int ID_Documento { get; set; }
+
+        [ForeignKey("ID_Documento")]
+        public virtual Documento Documento { get; set; }
 
         [Required]
         public TipoAlerta Tipo { get; set; } // Tipo de alerta (Modificación, Eliminación, Vencimiento)
@@ -20,6 +23,12 @@ namespace SistemaDocumental.Core.Entities
         public DateTime Fecha_Creacion { get; set; } = DateTime.Now;
 
         public bool Activa { get; set; } = true; // Indica si la alerta sigue vigente
+
+        // Relación 1-N: Una alerta puede tener múltiples destinatarios
+        public virtual ICollection<AlertaDestinatario> Destinatarios { get; set; } = new List<AlertaDestinatario>();
+
+         // Relación 1-N: Una alerta puede generar múltiples notificaciones
+        public virtual ICollection<NotificacionEvento> Notificaciones { get; set; } = new List<NotificacionEvento>();
     }
 
     public enum TipoAlerta

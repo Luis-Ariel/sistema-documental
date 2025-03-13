@@ -15,11 +15,15 @@ namespace SistemaDocumental.Core.Entities
         public string Nombre_Seccion { get; set; }
 
         [Required]
-        public int ID_Departamento { get; set; } // Relacionado con la tabla Departamento
-
-        public string Descripcion { get; set; }
+        public int ID_Departamento { get; set; }
 
         [ForeignKey("ID_Departamento")]
         public virtual Departamento Departamento { get; set; }
+
+        public string Descripcion { get; set; }
+
+        // Relación 1-N: Una sección puede contener múltiples oficinas
+        public virtual ICollection<Oficina> Oficinas { get; set; } = new List<Oficina>();
+
     }
 }
