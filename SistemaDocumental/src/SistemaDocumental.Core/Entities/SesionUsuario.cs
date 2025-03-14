@@ -1,42 +1,35 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using SistemaDocumental.Core.Entities.Enums;
 
 namespace SistemaDocumental.Core.Entities
 {
     public class SesionUsuario
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)] // ID generado automáticamente
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)] 
         public int ID_Sesion { get; set; }
 
         [Required]
-        public DateTime Fecha_Inicio { get; set; } = DateTime.Now; // Inicio de la sesión
+        public DateTime Fecha_Inicio { get; set; } = DateTime.Now;
 
-        public DateTime? Fecha_Expiracion { get; set; } // Cuándo expira la sesión
+        public DateTime? Fecha_Expiracion { get; set; } 
 
         [Required]
-        public EstadoSesion Estado { get; set; } = EstadoSesion.Activa; // Estado de la sesión
+        public EstadoSesion Estado { get; set; } = EstadoSesion.Activa; 
 
         [Required]
         [MaxLength(45)]
-        public string IP { get; set; } // Dirección IP del usuario
+        public string IP { get; set; } = string.Empty; // Inicialización
 
         [Required]
-        public bool Doble_Factor_Completado { get; set; } = false; // Indica si el 2FA fue completado
+        public bool Doble_Factor_Completado { get; set; } = false; 
 
-        // Clave foránea: Usuario que inició la sesión
         [Required]
         public int ID_Usuario { get; set; }
 
         [ForeignKey("ID_Usuario")]
-        public virtual Usuario Usuario { get; set; }
-    }
-
-    public enum EstadoSesion
-    {
-        Activa,
-        Expirada,
-        Cerrada
+        public virtual Usuario Usuario { get; set; } = null!; // Inicialización con `null!`
     }
 }

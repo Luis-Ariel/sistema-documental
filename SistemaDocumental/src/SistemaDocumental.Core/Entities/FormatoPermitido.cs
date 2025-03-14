@@ -12,12 +12,22 @@ namespace SistemaDocumental.Core.Entities
 
         [Required]
         [MaxLength(10)]
-        public string Extension { get; set; } // Extensión del archivo (Ej: 'pdf', 'docx')
+        public string Extension { get; set; } = string.Empty; // Evita valores NULL sin afectar la base de datos
 
         [MaxLength(200)]
-        public string Descripcion { get; set; } // Descripción opcional del formato permitido
+        public string Descripcion { get; set; } = string.Empty; // Evita valores NULL sin afectar la base de datos
 
         // Relación 1-N: Un formato puede estar en múltiples tipos de documentos
         public virtual ICollection<TipoDocumento> TiposDeDocumentos { get; set; } = new List<TipoDocumento>();
+
+        // Constructor vacío necesario para Entity Framework
+        public FormatoPermitido() { }
+
+        // Constructor con parámetros para inicializar los valores requeridos
+        public FormatoPermitido(string extension, string descripcion = "")
+        {
+            Extension = extension;
+            Descripcion = descripcion;
+        }
     }
 }

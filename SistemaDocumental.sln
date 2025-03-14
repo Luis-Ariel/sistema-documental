@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DB2B17B9-EE9
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaDocumental.API", "SistemaDocumental\src\SistemaDocumental.API\SistemaDocumental.API.csproj", "{1C9C3E94-540A-4309-85A1-2B84BBCADE1A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaDocumental.Core", "SistemaDocumental\src\SistemaDocumental.Core\SistemaDocumental.Core.csproj", "{337CFC07-EF41-4B30-95D3-F493C113B169}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +33,18 @@ Global
 		{1C9C3E94-540A-4309-85A1-2B84BBCADE1A}.Release|x64.Build.0 = Release|Any CPU
 		{1C9C3E94-540A-4309-85A1-2B84BBCADE1A}.Release|x86.ActiveCfg = Release|Any CPU
 		{1C9C3E94-540A-4309-85A1-2B84BBCADE1A}.Release|x86.Build.0 = Release|Any CPU
+		{337CFC07-EF41-4B30-95D3-F493C113B169}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{337CFC07-EF41-4B30-95D3-F493C113B169}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{337CFC07-EF41-4B30-95D3-F493C113B169}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{337CFC07-EF41-4B30-95D3-F493C113B169}.Debug|x64.Build.0 = Debug|Any CPU
+		{337CFC07-EF41-4B30-95D3-F493C113B169}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{337CFC07-EF41-4B30-95D3-F493C113B169}.Debug|x86.Build.0 = Debug|Any CPU
+		{337CFC07-EF41-4B30-95D3-F493C113B169}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{337CFC07-EF41-4B30-95D3-F493C113B169}.Release|Any CPU.Build.0 = Release|Any CPU
+		{337CFC07-EF41-4B30-95D3-F493C113B169}.Release|x64.ActiveCfg = Release|Any CPU
+		{337CFC07-EF41-4B30-95D3-F493C113B169}.Release|x64.Build.0 = Release|Any CPU
+		{337CFC07-EF41-4B30-95D3-F493C113B169}.Release|x86.ActiveCfg = Release|Any CPU
+		{337CFC07-EF41-4B30-95D3-F493C113B169}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -38,5 +52,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{DB2B17B9-EE97-92C9-0456-20D5BBA5C546} = {9305127C-29C6-D712-4449-F6C617861D86}
 		{1C9C3E94-540A-4309-85A1-2B84BBCADE1A} = {DB2B17B9-EE97-92C9-0456-20D5BBA5C546}
+		{337CFC07-EF41-4B30-95D3-F493C113B169} = {DB2B17B9-EE97-92C9-0456-20D5BBA5C546}
 	EndGlobalSection
 EndGlobal

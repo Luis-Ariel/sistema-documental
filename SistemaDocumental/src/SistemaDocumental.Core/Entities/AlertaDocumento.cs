@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using SistemaDocumental.Core.Entities.Enums;
 
 namespace SistemaDocumental.Core.Entities
 {
@@ -14,7 +15,7 @@ namespace SistemaDocumental.Core.Entities
         public int ID_Documento { get; set; }
 
         [ForeignKey("ID_Documento")]
-        public virtual Documento Documento { get; set; }
+        public virtual Documento Documento { get; set; } = null!; // Inicialización para evitar warning
 
         [Required]
         public TipoAlerta Tipo { get; set; } // Tipo de alerta (Modificación, Eliminación, Vencimiento)
@@ -27,14 +28,7 @@ namespace SistemaDocumental.Core.Entities
         // Relación 1-N: Una alerta puede tener múltiples destinatarios
         public virtual ICollection<AlertaDestinatario> Destinatarios { get; set; } = new List<AlertaDestinatario>();
 
-         // Relación 1-N: Una alerta puede generar múltiples notificaciones
+        // Relación 1-N: Una alerta puede generar múltiples notificaciones
         public virtual ICollection<NotificacionEvento> Notificaciones { get; set; } = new List<NotificacionEvento>();
-    }
-
-    public enum TipoAlerta
-    {
-        Modificacion,
-        Eliminacion,
-        Vencimiento
     }
 }

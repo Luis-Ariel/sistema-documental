@@ -14,13 +14,13 @@ namespace SistemaDocumental.Core.Entities
         public int ID_Rol { get; set; }
 
         [ForeignKey("ID_Rol")]
-        public virtual Rol Rol { get; set; }
+        public virtual Roles Rol { get; set; } = null!; // Inicialización para evitar warning
 
         // Clave foránea: Permiso
         [Required]
         public int ID_Permiso { get; set; }
 
         [ForeignKey("ID_Permiso")]
-        public virtual Permiso Permiso { get; set; }
+        public virtual Permiso Permiso { get; set; } = null!; // Inicialización para evitar warning
     }
 }

@@ -11,20 +11,17 @@ namespace SistemaDocumental.Core.Entities
         public int ID_Tipo_Documento { get; set; }
 
         [Required]
-        public int ID_Formato { get; set; } // Relacionado con la tabla Formato_Permitido
-
-        [Required]
         [MaxLength(50)]
-        public string Nombre_Tipo { get; set; } // Nombre del tipo de documento
+        public string Nombre_Tipo { get; set; } = string.Empty; // Inicialización para evitar warning
 
-        public string Descripcion { get; set; } // Información adicional sobre el tipo de documento
+        public string Descripcion { get; set; } = string.Empty; // Inicialización para evitar warning
 
         // Clave foránea: Formato permitido
         [Required]
         public int ID_Formato { get; set; }
 
         [ForeignKey("ID_Formato")]
-        public virtual FormatoPermitido FormatoPermitido { get; set; }
+        public virtual FormatoPermitido FormatoPermitido { get; set; } = null!; // Inicialización para evitar warning
 
         // Relación 1-N: Un tipo de documento puede estar en múltiples CategoriaTipoDocumento
         public virtual ICollection<CategoriaTipoDocumento> CategoriasTipoDocumento { get; set; } = new List<CategoriaTipoDocumento>();

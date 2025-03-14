@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using SistemaDocumental.Core.Entities.Enums;
 
 namespace SistemaDocumental.Core.Entities
 {
@@ -15,13 +16,13 @@ namespace SistemaDocumental.Core.Entities
         public int ID_Usuario { get; set; }
 
         [ForeignKey("ID_Usuario")]
-        public virtual Usuario Usuario { get; set; }
+        public virtual Usuario Usuario { get; set; } = null!; // Evita warnings de valores nulos
 
         [Required]
         public int ID_Permiso { get; set; }
 
         [ForeignKey("ID_Permiso")]
-        public virtual Permiso Permiso { get; set; }
+        public virtual Permiso Permiso { get; set; } = null!;
 
         [Required]
         public DateTime Fecha { get; set; } = DateTime.Now; // Fecha del cambio
@@ -33,26 +34,24 @@ namespace SistemaDocumental.Core.Entities
         public int? ID_Grupo { get; set; }
 
         [ForeignKey("ID_Grupo")]
-        public virtual Rol Grupo { get; set; }
+        public virtual Roles? Grupo { get; set; } // Puede ser nulo
 
         [Required]
         public NivelAcceso Nivel_Acceso { get; set; } // Nivel de acceso del permiso
 
-        public string Descripcion { get; set; } // Descripción adicional del cambio
-    }
+        public string Descripcion { get; set; } = string.Empty; // Evita valores nulos en descripciones
 
-    public enum TipoCambioPermiso
-    {
-        Asignado,
-        Modificado,
-        Eliminado
-    }
+        // Constructor vacío para Entity Framework
+        public HistorialPermisos() { }
 
-    public enum NivelAcceso
-    {
-        Lectura,
-        Escritura,
-        Edicion,
-        Eliminacion
+        // Constructor con parámetros obligatorios para evitar nulos
+        public HistorialPermisos(int idUsuario, int idPermiso, TipoCambioPermiso tipoCambio, NivelAcceso nivelAcceso, string descripcion = "")
+        {
+            ID_Usuario = idUsuario;
+            ID_Permiso = idPermiso;
+            Tipo_Cambio = tipoCambio;
+            Nivel_Acceso = nivelAcceso;
+            Descripcion = descripcion;
+        }
     }
 }
