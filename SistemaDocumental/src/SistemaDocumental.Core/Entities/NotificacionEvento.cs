@@ -58,6 +58,8 @@ namespace SistemaDocumental.Core.Entities
             Mensaje = mensaje;
             Estado = estado;
         }
+
+        public bool Leido { get; set; } = false;
     }
 }
 
